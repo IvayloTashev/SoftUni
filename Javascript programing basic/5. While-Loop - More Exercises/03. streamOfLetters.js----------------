@@ -1,0 +1,64 @@
+function streamOfLetters(input) {
+
+    let index = 0;
+    let command = input[index];
+    let buffer = "";
+    let word = "";
+    let cCouter = 0;
+    let oCouter = 0;
+    let nCouter = 0;
+
+    while (command !== "End") {
+
+        if (command === "c" && cCouter >= 1) {
+            buffer += command;
+        } 
+        
+        if (command === "c") {
+            cCouter++;
+            index++;
+            command = input[index];
+            continue;
+        }
+
+        if (command === "o" && oCouter >= 1) {
+            buffer += command;
+        } 
+
+        if (command === "o") {
+            oCouter++;
+            index++;
+            command = input[index];
+            continue;
+        }
+
+        if (command === "n" && nCouter >= 1) {
+            buffer += command;
+        } 
+
+        if (command === "n") {
+            nCouter++;
+            index++;
+            command = input[index];
+            continue;
+        }
+
+        if (oCouter >= 1 && cCouter >= 1 && nCouter >= 1) {
+            word += buffer + " ";
+            buffer = "";
+            cCouter = 0;
+            oCouter = 0;
+            nCouter = 0;
+        }
+
+        buffer += command;
+        index++;
+        command = input[index];
+
+    }
+
+    console.log(word);
+
+}
+
+streamOfLetters(["o", "S", "%", "o", "l", "^", "v", "e", "c", "n", "&", "m", "e", "c", "o", "n", "End"])

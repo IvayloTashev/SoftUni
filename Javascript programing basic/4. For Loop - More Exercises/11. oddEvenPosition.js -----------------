@@ -1,0 +1,46 @@
+function oddEvenPosition(input) {
+
+    let numbers = Number(input[0]);
+
+    let oddSum = 0;
+    let oddMin = 1000000;
+    let oddMax = -1000000;
+    let evenSum = 0;
+    let evenMin = 1000000;
+    let evenMax = -1000000;
+
+
+    for (let i = 1; i < input.length; i++) {
+
+        if (Number(input[i]) % 2 !== 0) {
+            oddSum += Number(input[i]);
+            if (oddMin > Number(input[i])) {
+                oddMin = Number(input[i]);
+            }
+
+            if (oddMax < Number(input[i])) {
+                oddMax = Number(input[i]);
+            }
+
+        } else {
+            evenSum += Number(input[i]);
+            if (evenMin > Number(input[i])) {
+                evenMin = Number(input[i]);
+            }
+            if (evenMax < Number(input[i])) {
+                evenMax = Number(input[i]);
+            }
+        }
+
+    }
+
+    console.log(`OddSum=${oddSum.toFixed(2)},`);
+    console.log(`OddMin=${oddMin.toFixed(2)},`);
+    console.log(`OddMax=${oddMax.toFixed(2)},`);
+    console.log(`EvenSum=${evenSum.toFixed(2)},`);
+    console.log(`EvenMin=${evenMin.toFixed(2)},`);
+    console.log(`EvenMax=${evenMax.toFixed(2)}`);
+
+}
+
+oddEvenPosition(["6", "2", "3", "5", "4", "2", "1"])

@@ -1,0 +1,5 @@
+function lettersCombinations(input) {
+
+}
+
+lettersCombinations(["a", "c", "b"])
