@@ -15,12 +15,14 @@ function thePyramidOfKingDjoser(base, increment) {
         if (i <= 2) {
             let currentGold = i * i * increment;
             gold += currentGold;
+
         } else if (pyramidHeight % 5 == 0) {
             let currentLapis = ((4 * i) - 4) * increment;
             lapisLazuli += currentLapis;
 
             currentStone = (i * i * increment) - currentLapis;
             stone += currentStone;
+            
         } else {
             currentMarble = ((i * 4) - 4) * increment;
             marble += currentMarble;
