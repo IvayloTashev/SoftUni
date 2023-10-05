@@ -20,9 +20,11 @@ function magicMatrices(arr) {
         columnArr.push(columnSum)
     }
 
+    let targert = rowsArr[0];
+
     for (let k = 0; k < rowsArr.length; k++) {
     
-        if (rowsArr [k] !== columnArr[k]){
+        if (targert !== rowsArr [k] || targert !== columnArr[k]){
             isMagic = false;
             break;
         }
