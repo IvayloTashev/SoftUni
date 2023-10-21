@@ -4,11 +4,7 @@ function computerStore(input) {
     let command = input[index];
     let TotalPriceWithoutTaxes = 0;
 
-    while (command != "special") {
-
-        if (command == "regular") {
-            break;
-        }
+    while (command != "special" && command != "regular") {
 
         let currentPrice = Number(input[index]);
 
