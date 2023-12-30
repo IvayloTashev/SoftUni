@@ -30,6 +30,4 @@ function valueOfAString(input) {
 }
 
 valueOfAString(['AC/DC',
-'UPPERCASE']
-
-)
+'UPPERCASE'])
