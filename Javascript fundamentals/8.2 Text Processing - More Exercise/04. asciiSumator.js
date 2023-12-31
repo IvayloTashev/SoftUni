@@ -8,7 +8,6 @@ function asciiSumator(input) {
     let sum = 0;
 
     for (let char of string) {
-        
         charCode = char.charCodeAt();
 
         if (code1 < code2) {
@@ -18,6 +17,7 @@ function asciiSumator(input) {
             }
 
         } else {
+
             if (charCode > code2 && charCode < code1) {
                 sum += charCode;
             }
@@ -27,8 +27,6 @@ function asciiSumator(input) {
     }
 
     console.log(sum);
-
-
 
 }
 
