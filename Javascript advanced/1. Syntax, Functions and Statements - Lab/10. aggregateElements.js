@@ -5,7 +5,6 @@ function aggregateElements(arr) {
     let concat = ``;
 
     for (let num of arr) {
-
         sum += num;
         sumInverse += 1 / num;
         concat += num;
