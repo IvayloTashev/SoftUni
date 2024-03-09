@@ -76,7 +76,3 @@ async function createStudent() {
     facultyNumber.value = "";
     grade.value = "";
 }
-
-
-
-
