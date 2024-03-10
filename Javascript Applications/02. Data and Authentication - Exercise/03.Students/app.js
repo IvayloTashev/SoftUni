@@ -62,7 +62,7 @@ async function createStudent() {
         firstName,
         lastName,
         facultyNumber,
-        grade: Number(grade)
+        grade: grade
     };
 
     await fetch(URL, {

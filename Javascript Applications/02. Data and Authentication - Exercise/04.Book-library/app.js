@@ -1,81 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('loadBooks').addEventListener('click', loadBooks);
-    document.querySelector('form').addEventListener('submit', submitHandler);
-});
+const host = 'http://localhost:3030/jsonstore/collections/books'
 
-const url = `http://localhost:3030/jsonstore/collections/books`
-const tbody = document.querySelector('tbody');
+const form = document.querySelector('form'),
+    tbody = document.querySelector('tbody')
+
+let editId
+
+document.getElementById('loadBooks').addEventListener('click', loadBooks)
+
+form.addEventListener('submit', async e => {
+    e.preventDefault()
+
+    const data = Object.fromEntries(new FormData(e.target).entries())
+
+    if (editId)
+        await request('put', '/' + editId, data)
+    else
+        await request('post', '', data)
+
+    await loadBooks()
+})
 
 async function loadBooks() {
-    const response = await fetch(url);
-    const data = await response.json();
+    const books = Object.entries(await get())
 
-    tbody.innerHTML = '';
-
-    for (let [id, book] of Object.entries(data)) {
-        tbody.innerHTML += `
-        <tr>
-            <td>${book.title}</td>
-            <td>${book.author}</td>
-            <td>
-                <button class="editBtn" data-id="${id}">Edit</button>
-                <button class="deleteBtn" data-id="${id}">Delete</button>
-             </td>
-        </tr>
-        `
-    }
-    tbody.querySelectorAll('.editBtn').forEach(btn => btn.addEventListener('click', onEdit));
-    tbody.querySelectorAll('.deleteBtn').forEach(btn => btn.addEventListener('click', onDelete));
+    tbody.replaceChildren(...books.map(createBookCard))
 }
 
-async function submitHandler(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const title = formData.get('title').trim();
-    const author = formData.get('author').trim();
+function createBookCard([id, book]) {
+    const tr = document.createElement('tr')
 
-    if (title && author) {
-        const book = { title, author };
-        if (event.target.dataset.id) {
-            await onUpdate(event.target.dataset.id, book);
+    tr.innerHTML = `<td>${book.title}</td>
+                <td>${book.author}</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>`
+
+    tr.addEventListener('click', async e => {
+        const btn = e.target
+
+        if (btn.tagName != 'BUTTON') return
+
+        if (btn.textContent == 'Edit') {
+            console.log(book);
+            form.querySelector('h3').textContent = 'Edit FORM'
+            form.querySelector('button').textContent = 'Save'
+            form.querySelector('input[name="title"]').value = book.title
+            form.querySelector('input[name="author"]').value = book.author
+
+            editId = id
         } else {
-            await onCreate(book);
+            await request('delete', id)
         }
-        event.target.reset();
-        delete event.target.dataset.id;
-        await loadBooks();
+    })
+
+    return tr
+}
+
+async function request(method, url = '', body) {
+    const options = { method }
+
+    if (body) {
+        options.headers = { 'content-type': 'application/json' }
+        options.body = JSON.stringify(body)
+    }
+
+    const response = await fetch(host + url, options)
+
+    if (!response.ok) throw new Error('err')
+
+    try {
+        return await response.json()
+    } catch (error) {
+        return response
     }
 }
 
-async function onCreate(book) {
-    await fetch('http://localhost:3030/jsonstore/collections/books', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(book)
-    });
-}
-
-async function onEdit(event) {
-    const bookId = event.target.dataset.id;
-    const bookDetails = await fetch(`http://localhost:3030/jsonstore/collections/books/${bookId}`).then(res => res.json());
-    const form = document.querySelector('form');
-    form['title'].value = bookDetails.title;
-    form['author'].value = bookDetails.author;
-    form.dataset.id = bookId;
-}
-
-async function onUpdate(id, book) {
-    await fetch(`http://localhost:3030/jsonstore/collections/books/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(book)
-    });
-}
-
-async function onDelete(event) {
-    const bookId = event.target.dataset.id;
-    await fetch(`http://localhost:3030/jsonstore/collections/books/${bookId}`, {
-        method: 'DELETE'
-    });
-    await loadBooks();
-}
+const get = request.bind(null, 'get')

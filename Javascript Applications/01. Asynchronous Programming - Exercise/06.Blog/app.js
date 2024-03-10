@@ -1,3 +1,4 @@
+//** 50/100
 function attachEvents() {
     const btnLoadPostsRef = document.getElementById(`btnLoadPosts`);
     const btnViewPost = document.getElementById(`btnViewPost`);
@@ -54,3 +55,42 @@ function attachEvents() {
 }
 
 attachEvents();
+
+//** 100/100
+// function attachEvents() {
+//     const postsSelect = document.getElementById('posts'),
+//         postH1 = document.getElementById('post-title'),
+//         postP = document.getElementById('post-body'),
+//         host = 'http://localhost:3030/jsonstore/blog'
+
+//     let posts
+
+//     document.getElementById('btnLoadPosts').addEventListener('click', async () => {
+//         posts = await get('/posts')
+
+//         postsSelect.innerHTML = ''
+//         for (const p of posts) {
+//             postsSelect.appendChild(makePostOption(p.id, p.title))
+//         }
+//     })
+
+//     document.getElementById('btnViewPost').addEventListener('click', async () => {
+//         const post = posts.find(p => p.id == postsSelect.value)
+
+//         postH1.textContent = post.title
+//         postP.textContent = post.body
+//     })
+
+//     function makePostOption(value, text) {
+//         const option = document.createElement('option')
+//         option.value = value
+//         option.text = text
+//         return option
+//     }
+
+//     async function get(url) {
+//         return (await fetch(host + url)).json()
+//     }
+// }
+
+// attachEvents();
