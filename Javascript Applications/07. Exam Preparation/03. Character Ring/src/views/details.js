@@ -1,8 +1,9 @@
 import { getCharById } from "../data/chars.js";
+import { alreadyLiked, likeCharacter, likeCounts } from "../data/likes.js";
 import { getUserData } from "../data/util.js";
 import { html, render, page } from "../lib.js";
 
-const detailsTemp = (charData, ownerId) => html`
+const detailsTemp = (charData, hasUser, isOwner, likes, likedByUser) => html`
 <!-- Details page -->
 <section id="details">
     <div id="details-wrapper">
@@ -15,24 +16,46 @@ const detailsTemp = (charData, ownerId) => html`
                     <p id ="more-info">${charData.moreInfo}</p>
                 </div>
             </div>
-            <h3>Is This Useful:<span id="likes">0</span></h3>
+            <h3>Is This Useful:<span id="likes">${likes}</span></h3>
             <!-- TODO BONUS -->
-            ${ownerId == charData._ownerId ? html`
+            ${hasUser ? html`
                 <div id="action-buttons">
+                    ${isOwner ? html `
                     <a href="/edit/${charData._id}" id="edit-btn">Edit</a>
-                    <a href="/delete/${charData._id}" id="delete-btn">Delete</a>
-            
-                    <a href="/like/${charData._id}" id="like-btn">Like</a>
+                    <a href="/delete/${charData._id}" id="delete-btn">Delete</a>` : (!likedByUser ? html`
+                    <a href="javascript:void(0)" id="like-btn" @click=${likeChar}>Like</a>` : "")}
                 </div>` : ""}
         </div>
     </div>
 </section>`;
 
+let context = null;
 export async function showDetailsVeiw(ctx) {
-    const id = ctx.params.id;
-    const charData = await getCharById(id);
+    context = ctx;
+    const id = context.params.id;
 
-    const ownerId = getUserData()?._id;
+    const requests = [
+        getCharById(id),
+        likeCounts(id)
+    ]
 
-    render(detailsTemp(charData, ownerId));
+    const user = getUserData();
+
+    if (user) {
+        requests.push(alreadyLiked(id, user._id))
+    }
+
+    const [charData, likes, likedByUser] = await Promise.all(requests);
+
+    const hasUser = !!user;
+    const isOwner = hasUser && user._id == charData._ownerId
+
+    render(detailsTemp(charData, hasUser, isOwner, likes, likedByUser));
+}
+
+async function likeChar(event) {
+    event.preventDefault();
+    const id = context.params.id;
+    await likeCharacter(id);
+    page.redirect(`/details/${id}`);
 }
