@@ -4,6 +4,7 @@ const endpoints = {
     allFruits: "/data/fruits?sortBy=_createdOn%20desc",
     fruitById: "/data/fruits/",
     fruit: "/data/fruits",
+    querySearch: (query) => `/data/fruits?where=name%20LIKE%20%22${query}%22`
 };
 
 async function getAllFruits() {
@@ -36,10 +37,15 @@ async function deleteFruit(id) {
     return del(endpoints.fruitById + id);
 };
 
+async function search(query) {
+    return get(endpoints.querySearch(query))
+}
+
 export {
     getAllFruits,
     getFruitById,
     updateFruit,
     createFruit,
-    deleteFruit
+    deleteFruit,
+    search
 }

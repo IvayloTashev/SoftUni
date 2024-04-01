@@ -9,6 +9,7 @@ import { homeView } from "./views/home.js";
 import { loginView } from "./views/login.js";
 import { logoutView } from "./views/logout.js";
 import { registerView } from "./views/register.js";
+import { showSearch } from "./views/search.js";
 
 page("/", homeView);
 page("/login", loginView);
@@ -17,7 +18,7 @@ page("/register", registerView);
 page("/dashboard", dashboardVeiw);
 page("/create", createVeiw);
 page("/edit/:id", editView);
-page("/search", () => console.error("search"));
+page("/search", showSearch);
 page("/details/:id", detailsView);
 
 updateNav();
