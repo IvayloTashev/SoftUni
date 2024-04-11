@@ -1,5 +1,6 @@
 import { updateNav } from "./data/util.js";
 import { page } from "./lib.js"
+import { showCreate } from "./views/create.js";
 import { showDashboard } from "./views/dashboard.js";
 import { showHome } from "./views/home.js";
 import { showLogin } from "./views/login.js";
@@ -11,7 +12,7 @@ page("/login", showLogin);
 page("/logout", showLogout);
 page("/register", showRegister);
 page("/dashboard", showDashboard);
-page("/create", () => console.error("create"));
+page("/create", showCreate);
 page("/search", () => console.error("search"));
 page("/edit/:id", () => console.error("edit"));
 page("/delete/:id", () => console.error("delete"));
