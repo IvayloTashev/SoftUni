@@ -2,6 +2,9 @@ import { updateNav } from "./data/util.js";
 import { page } from "./lib.js"
 import { showCreate } from "./views/create.js";
 import { showDashboard } from "./views/dashboard.js";
+import { showDelete } from "./views/delete.js";
+import { showDetails } from "./views/details.js";
+import { showEdit } from "./views/edit.js";
 import { showHome } from "./views/home.js";
 import { showLogin } from "./views/login.js";
 import { showLogout } from "./views/logout.js";
@@ -14,9 +17,9 @@ page("/register", showRegister);
 page("/dashboard", showDashboard);
 page("/create", showCreate);
 page("/search", () => console.error("search"));
-page("/edit/:id", () => console.error("edit"));
-page("/delete/:id", () => console.error("delete"));
-page("/details/:id", () => console.error("details"));
+page("/edit/:id", showEdit);
+page("/delete/:id", showDelete);
+page("/details/:id", showDetails);
 
 updateNav();
 page.start();
