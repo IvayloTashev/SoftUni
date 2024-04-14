@@ -4,6 +4,7 @@ const endpoints = {
     allShoes: "/data/shoes?sortBy=_createdOn%20desc",
     shoeById: "/data/shoes/",
     shoes: "/data/shoes",
+    search: (query) => `/data/shoes?where=brand%20LIKE%20%22${query}%22`
 };
 
 export async function getAllShoes() {
@@ -39,3 +40,7 @@ export async function updateShoe(id, brand, model, imageUrl, release, designer, 
 export async function deleteShoe(id) {
     await del(endpoints.shoeById + id);
 };
+
+export async function searchShoe(query) {
+    return get(endpoints.search(query))
+}
