@@ -1,26 +1,20 @@
 import { updateNav } from "./data/util.js";
 import { page } from "./lib.js"
-import { showCreate } from "./views/create.js";
-import { showDashboard } from "./views/dashboard.js";
-import { showDelete } from "./views/delete.js";
-import { showDetails } from "./views/details.js";
-import { showEdit } from "./views/edit.js";
-import { showHome } from "./views/home.js";
-import { showLogin } from "./views/login.js";
+import { showDashboardView } from "./views/dashboard.js";
+import { showHomeView } from "./views/home.js";
+import { showLoginView } from "./views/login.js";
 import { showLogout } from "./views/logout.js";
-import { showRegister } from "./views/register.js";
-import { showSearch } from "./views/search.js";
+import { showRegisterView } from "./views/register.js";
 
-page("/", showHome);
-page("/login", showLogin);
+page("/", showHomeView);
+page("/register", showRegisterView);
+page("/login", showLoginView);
 page("/logout", showLogout);
-page("/register", showRegister);
-page("/dashboard", showDashboard);
-page("/create", showCreate);
-page("/search", showSearch);
-page("/edit/:id", showEdit);
-page("/delete/:id", showDelete);
-page("/details/:id", showDetails);
+page("/dashboard", showDashboardView);
+page("/create", () => console.error("create"));
+page("/edit/:id", () => console.error("edit"));
+page("/delete/:id", () => console.error("delete"));
+page("/details/:id", () => console.error("details"));
 
 updateNav();
 page.start();
