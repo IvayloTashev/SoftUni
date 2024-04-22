@@ -21,6 +21,5 @@ const solutionTemplate = (solution) => html`
 
 export async function showDashboard(ctx) {
     const solutionsData = await getAllSolutions();
-    debugger;
     render(dashboardTemplate(solutionsData));
 }
