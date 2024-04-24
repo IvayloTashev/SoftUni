@@ -14,7 +14,7 @@ const solutionTemplate = (solution) => html`
         <div class="solution-info">
             <h3 class="type">${solution.type}</h3>
             <p class="description">${solution.description}</p>
-            <a class="details-btn" href="/details${solution._id}">Learn More</a>
+            <a class="details-btn" href="/details/${solution._id}">Learn More</a>
         </div>
     </div>
 `;
