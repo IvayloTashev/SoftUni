@@ -1,8 +1,8 @@
-import { getsolutionById } from "../data/solutions.js";
+import { alreadyLikedByUser, getsolutionById, likeCount } from "../data/solutions.js";
 import { getUserData } from "../data/util.js";
 import { html, render } from "../lib.js";
 
-const detailsTemplate = (solutionsData, isOwner) => html`
+const detailsTemplate = (solutionsData, isOwner, likeCounter) => html`
     <section id="details">
         <div id="details-wrapper">
             <img id="details-img" src=${solutionsData.imageUrl} alt="example1" />
@@ -14,26 +14,56 @@ const detailsTemplate = (solutionsData, isOwner) => html`
                         <p id="more-info">${solutionsData.learnMore}</p>
                     </div>
                  </div>
-                <h3>Like Solution:<span id="like">0</span></h3>
+                <h3>Like Solution:<span id="like">${likeCounter}</span></h3>
+
+
 
               ${isOwner ? html`
               <div id="action-buttons">
                 <a href="/edit/${solutionsData._id}" id="edit-btn">Edit</a>
                 <a href="/delete/${solutionsData._id}" id="delete-btn">Delete</a>
                 <!--Bonus - Only for logged-in users ( not authors )-->
-                <!-- <a href="#" id="like-btn">Like</a> -->
+                <a href="javascript:void(0)" id="like-btn" @submit=${onLine}>Like</a>
               </div>` : null}
             </div>
         </div>
-    </section>
-`;
+    </section>`;
+
+const divContainer = () => html`
+    <div id="action-buttons">
+        ${}
+    </div>
+
+
+let context = null;
 
 export async function showDetails(ctx) {
-    const id = ctx.params.id;
-    const solutionsData = await getsolutionById(id);
+    context = ctx;
+    const id = context.params.id;
+
+    const requests = [
+        getsolutionById(id),
+        likeCount(id)
+    ]
 
     const user = getUserData();
-    const isOwner = !!user && user._id == solutionsData._ownerId;
-    render(detailsTemplate(solutionsData, isOwner));
+
+    if (user) {
+        requests.push(alreadyLikedByUser(id, user._id))
+    }
+
+    const [solutionsData, likeCounter, userLiked] = await Promise.all(requests);
+
+    const hasUser = !!user;
+    const isOwner = hasUser && user._id == solutionsData._ownerId;
+
+    render(detailsTemplate(solutionsData, isOwner, likeCounter));
 };
+
+async function onLike(event) {
+    event.preventDefault();
+    const id = context.params.id;
+    debugger
+};
+
 
