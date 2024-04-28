@@ -1,8 +1,8 @@
-import { alreadyLikedByUser, getsolutionById, likeCount } from "../data/solutions.js";
+import { addingLike, alreadyLikedByUser, getsolutionById, likeCount } from "../data/solutions.js";
 import { getUserData } from "../data/util.js";
-import { html, render } from "../lib.js";
+import { html, render, page } from "../lib.js";
 
-const detailsTemplate = (solutionsData, isOwner, likeCounter) => html`
+const detailsTemplate = (solutionsData, isOwner, hasUser, likeCounter, userLiked) => html`
     <section id="details">
         <div id="details-wrapper">
             <img id="details-img" src=${solutionsData.imageUrl} alt="example1" />
@@ -16,27 +16,28 @@ const detailsTemplate = (solutionsData, isOwner, likeCounter) => html`
                  </div>
                 <h3>Like Solution:<span id="like">${likeCounter}</span></h3>
 
+                ${hasUser ? divContainer(isOwner, solutionsData, userLiked) : null}
 
-
-              ${isOwner ? html`
-              <div id="action-buttons">
-                <a href="/edit/${solutionsData._id}" id="edit-btn">Edit</a>
-                <a href="/delete/${solutionsData._id}" id="delete-btn">Delete</a>
-                <!--Bonus - Only for logged-in users ( not authors )-->
-                <a href="javascript:void(0)" id="like-btn" @submit=${onLine}>Like</a>
-              </div>` : null}
             </div>
         </div>
     </section>`;
 
-const divContainer = () => html`
+const divContainer = (isOwner, solutionsData, userLiked) => html`
     <div id="action-buttons">
-        ${}
-    </div>
+        ${isOwner ? editAndDeleteBtns(solutionsData) : !userLiked ? likeBtn() : null}
+    </div>`;
+
+const editAndDeleteBtns = (solutionsData) => html`
+    <a href="/edit/${solutionsData._id}" id="edit-btn">Edit</a>
+    <a href="/delete/${solutionsData._id}" id="delete-btn">Delete</a>
+`;
+
+const likeBtn = () => html`
+    <a href="javascript:void(0)" id="like-btn" @click=${onLike} >Like</a>
+`;
 
 
 let context = null;
-
 export async function showDetails(ctx) {
     context = ctx;
     const id = context.params.id;
@@ -57,13 +58,14 @@ export async function showDetails(ctx) {
     const hasUser = !!user;
     const isOwner = hasUser && user._id == solutionsData._ownerId;
 
-    render(detailsTemplate(solutionsData, isOwner, likeCounter));
+    render(detailsTemplate(solutionsData, isOwner, hasUser, likeCounter, userLiked));
 };
 
 async function onLike(event) {
     event.preventDefault();
     const id = context.params.id;
-    debugger
+    await addingLike(id);
+    page.redirect(`/details/${id}`)
 };
 
 

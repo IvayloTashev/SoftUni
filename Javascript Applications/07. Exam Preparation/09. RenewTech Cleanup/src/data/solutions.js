@@ -39,8 +39,8 @@ export async function deleteSolution(id) {
     await del(endpoints.solutionById + id);
 };
 
-export async function addingLike(id) {
-    return post (endpoints.addLike, {id})
+export async function addingLike(solutionId) {
+    await post (endpoints.addLike, {solutionId})
 };
 
 export async function likeCount(solutionId) {
