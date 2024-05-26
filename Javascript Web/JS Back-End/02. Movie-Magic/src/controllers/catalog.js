@@ -1,4 +1,4 @@
-const { getAllMovies, getMovieById } = require("../services/movie")
+const { getAllMovies, getMovieById, movieFilter } = require("../services/movie")
 
 module.exports = {
     home: async (req, res) => {
@@ -20,8 +20,12 @@ module.exports = {
         res.render("details", { movie });
     },
 
-    search: (req, res) => {
-        res.render("search");
-    },
+    search: async (req, res) => {
+        const queryParams = req.query;
+        const movies = await getAllMovies();
 
+        const filter = movieFilter(movies, queryParams);
+
+        res.render("search", { filter, queryParams });
+    }
 }

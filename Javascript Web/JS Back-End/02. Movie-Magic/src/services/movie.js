@@ -10,7 +10,7 @@ async function readFile() {
 };
 
 async function writeFile(data) {
-   await fs.writeFile(filePath, JSON.stringify(data))
+    await fs.writeFile(filePath, JSON.stringify(data))
 };
 
 function toMovieModel(data) {
@@ -42,7 +42,7 @@ async function getMovieById(id) {
 
 async function createMovie(data) {
     const id = uuid();
- 
+
     const movie = {
         id,
         title: data.title,
@@ -65,8 +65,29 @@ function uuid() {
     return `xxxx-xxxx`.replace(/x/g, () => (Math.random() * 16 | 0).toString(16));
 }
 
+function movieFilter(movies, queryParams) {
+    const { search, genre, year } = queryParams;
+
+    let filter = null;
+
+    if (!search && !genre && !year) {
+        filter = movies;
+
+    } else {
+        filter = movies.filter(movie => {
+            const matchesTitle = search ? movie.title.toLowerCase().includes(search.toLowerCase()) : true;
+            const matchesGenre = genre ? movie.genre.toLowerCase().includes(genre.toLowerCase()) : true;
+            const matchesYear = year ? movie.year.toString().includes(year.toString()) : true;
+            return matchesTitle && matchesGenre && matchesYear;
+        })
+    }
+
+    return filter;
+}
+
 module.exports = {
     getAllMovies,
     getMovieById,
-    createMovie
+    createMovie,
+    movieFilter
 }
