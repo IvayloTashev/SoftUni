@@ -2,7 +2,7 @@ const express = require(`express`);
 
 const handlebars = require(`express-handlebars`);
 const { homeController } = require("./controllers/homeController");
-const { addCatGet } = require("./controllers/addCatController");
+const { addCatGet, addCatPost } = require("./controllers/addCatController");
 const { addBreedGet, addBreedPost } = require("./controllers/addBreedController");
 
 const app = express();
@@ -17,6 +17,7 @@ app.use("/static", express.static("static"));
 
 app.get("/", homeController);
 app.get("/cats/add-cat", addCatGet);
+app.post("/cats/add-cat", addCatPost);
 app.get("/cats/add-breed", addBreedGet);
 app.post("/cats/add-breed", addBreedPost)
 

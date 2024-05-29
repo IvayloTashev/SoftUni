@@ -1,5 +1,5 @@
 const fs = require('fs/promises');
-const { readFile, writeFile } = require('../services/breed');
+const { readFileBreed, writeFileBreed } = require('../services/service');
 
 module.exports = {
     addBreedGet: (req, res) => {
@@ -9,9 +9,9 @@ module.exports = {
     addBreedPost: async (req, res) => {
         const newBreed = req.body.breed;
 
-        const breeds = await readFile();
+        const breeds = await readFileBreed();
         breeds.push(newBreed);
-        await writeFile(breeds);
+        await writeFileBreed(breeds);
         
         res.redirect("/");
     }

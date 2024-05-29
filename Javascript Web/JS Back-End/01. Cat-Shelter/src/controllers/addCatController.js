@@ -1,13 +1,14 @@
-const { getAllBreeds } = require("../services/breed");
+const { getAllBreeds, createCat } = require("../services/service");
 
 
 module.exports = {
     addCatGet: async (req, res) => {
         breeds = await getAllBreeds();
-        res.render("addCat");
+        res.render("addCat", { breeds });
     },
 
-    addCatPost: (req, res) => {
-        
+    addCatPost: async (req, res) => {
+        const result = await createCat(req.body);
+        res.redirect("/");
     }
 }
