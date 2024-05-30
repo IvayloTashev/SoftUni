@@ -2,16 +2,31 @@ const express = require(`express`);
 const { configExpress } = require(`./config/express`);
 const { configHbs } = require("./config/hbs");
 const { router } = require("./config/routes");
+const { configDatabase } = require("./config/database");
 
 const PORT = 3000;
 
-const app = express();
+async function start() {
+    const app = express();
 
-configExpress(app);
-configHbs(app);
-app.use(router);
+    await configDatabase();
+    configExpress(app);
+    configHbs(app);
+    app.use(router);
 
-app.listen(PORT, console.log("The app is running at port/: 3000"))
+    app.listen(PORT, () => {
+        console.log(`Application running on port: ${PORT}`);
+    });
+};
+
+start();
+
+
+
+
+
+
+
 
 
 
