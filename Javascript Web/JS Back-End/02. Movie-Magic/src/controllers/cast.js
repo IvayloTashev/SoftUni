@@ -1,10 +1,28 @@
+const { Aggregate } = require("mongoose");
+const { createCast } = require("../services/cast");
+
 module.exports = {
     createCastGet: (req, res) => {
         res.render("cast-create");
     },
 
-    createCastPost: (req, res) => {
-        console.log(req.body)
-        res.end();
+    createCastPost: async (req, res) => {
+        const errors = {
+            name: !req.body.name,
+            age: !req.body.age,
+            born: !req.body.born,
+            nameInMovie: !req.body.nameInMovie,
+            imageURL: !req.body.imageURL
+        };
+
+        console.log(errors);
+
+        if (Object.values(errors).includes(true)) {
+            res.render("cast-create", { cast: req.body, errors });
+            return;
+        }
+
+        const result = await createCast(req.body);
+        res.redirect("/");
     }
 };

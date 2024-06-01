@@ -1,3 +1,4 @@
+
 <section id="details-page">
 
     <div class="main_card">
@@ -23,6 +24,12 @@
         <div class="card_right">
             <img src="{{movie.imageURL}}" alt="image">
         </div>
+    </div>
+
+    <div class="main-cast-card">
+        {{#each cast}}
+        {{> cast}}
+        {{/each}}
     </div>
 
 </section>

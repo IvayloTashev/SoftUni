@@ -1,28 +1,15 @@
 const fs = require(`fs/promises`);
 const { Movie } = require("../models/Movie");
 
-const filePath = `./data/database.json`;
-
-async function readFile() {
-    const data = await fs.readFile(filePath);
-
-    return JSON.parse(data.toString());
-};
-
-async function writeFile(data) {
-    await fs.writeFile(filePath, JSON.stringify(data))
-};
-
-
 async function getAllMovies() {
     const movies = await Movie.find().lean();
     return movies;
-};
+}
 
 async function getMovieById(id) {
     const movie = await Movie.findById(id).lean();
     return movie;
-};
+}
 
 async function createMovie(movieData) {
     const movie = new Movie({
@@ -60,9 +47,24 @@ function movieFilter(movies, queryParams) {
     return filter;
 }
 
+async function attachCastToMovie(movieId, castId) {
+    const movie = await Movie.findById(movieId);
+
+    if (!movie) {
+        throw new Error(`Movie ${movieId} not found`)
+    }
+
+    movie.cast.push(castId);
+
+    await movie.save();
+
+    return movie;
+}
+
 module.exports = {
     getAllMovies,
     getMovieById,
     createMovie,
-    movieFilter
+    movieFilter,
+    attachCastToMovie
 }

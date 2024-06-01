@@ -4,6 +4,7 @@ const { aboutController } = require("../controllers/about");
 const { createMovieGet, createMoviePost} = require("../controllers/movie");
 const { notFound } = require("../controllers/404");
 const { createCastGet, createCastPost } = require("../controllers/cast");
+const { attachCastGet, attachCastPost } = require("../controllers/attachCast");
 
 const router = express.Router();
 
@@ -14,6 +15,8 @@ router.get("/create/movie", createMovieGet);
 router.post("/create/movie", createMoviePost);
 router.get("/create/cast", createCastGet);
 router.post("/create/cast", createCastPost);
+router.get("/attach/:id", attachCastGet);
+router.post("/attach/:id", attachCastPost);
 router.get("/search", search);
 
 router.get("*", notFound);

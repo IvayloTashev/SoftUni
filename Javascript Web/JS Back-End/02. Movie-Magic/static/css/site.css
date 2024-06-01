@@ -172,3 +172,12 @@ footer {
         padding: 0;
     }
 }
+
+.error label {
+    color: red;
+}
+
+.error input.inputFields, .error textarea.inputFields, .error select {
+    border-color: red;
+}
+

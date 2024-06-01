@@ -1,6 +1,6 @@
 const {Schema, SchemaTypes: Types, model} = require(`mongoose`);
 
-const castSchema = Schema({
+const castSchema = new Schema({
     name: {
         type: String,
         required: true
