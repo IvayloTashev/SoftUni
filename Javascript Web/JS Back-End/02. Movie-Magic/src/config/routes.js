@@ -5,12 +5,15 @@ const { createMovieGet, createMoviePost} = require("../controllers/movie");
 const { notFound } = require("../controllers/404");
 const { createCastGet, createCastPost } = require("../controllers/cast");
 const { attachCastGet, attachCastPost } = require("../controllers/attachCast");
+const { registerGet, registerPost } = require("../controllers/user");
 
 const router = express.Router();
 
 router.get("/", home);
 router.get("/details/:id", details);
 router.get("/about", aboutController);
+router.get("/register", registerGet);
+router.post("/register", registerPost);
 router.get("/create/movie", createMovieGet);
 router.post("/create/movie", createMoviePost);
 router.get("/create/cast", createCastGet);

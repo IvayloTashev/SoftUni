@@ -1,4 +1,3 @@
-const { Aggregate } = require("mongoose");
 const { createCast } = require("../services/cast");
 
 module.exports = {

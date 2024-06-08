@@ -1,7 +1,7 @@
 const mongoose = require(`mongoose`);
 require("../models/Movie");
 require("../models/Cast");
-require("../models/User");
+require("../models/user")
 
 const connectionString = `mongodb://127.0.0.1:27017/movie-magic`;
 
