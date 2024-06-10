@@ -2,8 +2,12 @@ const { getAllMovies, getMovieById, movieFilter } = require("../services/movie")
 
 module.exports = {
     home: async (req, res) => {
-        console.log(req.user);
         const movies = await getAllMovies();
+
+        for (const movie of movies) {
+            movie.isAuthor = req.user && req.user._id == movie.author.toString();
+        }
+
         res.render("home", { movies });
     },
 
@@ -15,6 +19,8 @@ module.exports = {
             res.render("404");
             return;
         }
+
+        movie.isAuthor = req.user && req.user._id == movie.author.toString();
 
         movie.starRating = "&#x2605".repeat(movie.rating);
 
