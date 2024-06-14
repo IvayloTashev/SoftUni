@@ -1,21 +1,30 @@
+const { Router } = require("express");
+const { body, validationResult } = require("express-validator");
 const { createToken } = require("../services/token");
 const { register, login } = require("../services/user");
+const { isGuest } = require("../middlewares/guards");
+const { parseError } = require("../services/util");
 
-module.exports = {
-    registerGet: (req, res) => {
-        res.render("register");
-    },
+const userRouter = Router();
 
-    registerPost: async (req, res) => {
-        const { email, password, repass } = req.body;
+userRouter.get("/register", isGuest(), (req, res) => {
+    res.render("register");
+});
+
+userRouter.post(
+    "/register",
+    isGuest(),
+    body("email").trim().isEmail().withMessage("Please enter a valid email"),
+    body("password").trim().isAlphanumeric().isLength({ min: 6 }).withMessage("Password must be at least 6 charecters long and may contain only English letters and numbers"),
+    body("repass").trim().custom((value, { req }) => value == req.body.password).withMessage("Password don\'t match"),
+    async (req, res) => {
+        const { email, password } = req.body;
 
         try {
-            if (!email || !password) {
-                throw new Error("All fields are required");
-            }
+            const result = validationResult(req);
 
-            if (password != repass) {
-                throw new Error("Password don\'t match")
+            if (result.errors.length) {
+                throw result.errors;
             }
 
             const user = await register(email, password);
@@ -25,38 +34,39 @@ module.exports = {
             res.redirect("/");
 
         } catch (err) {
-            res.render("register", { data: { email }, error: err.message });
+            res.render("register", { data: { email }, errors: parseError(err).errors });
             return;
         }
-    },
-
-    loginGet: (req, res) => {
-        res.render("login");
-    },
-
-    loginPost: async (req, res) => {
-        const { email, password } = req.body;
-
-        try {
-            if (!email || !password) {
-                throw new Error("All fields are required");
-            }
-
-            const user = await login(email, password);
-            const token = createToken(user);
-
-            res.cookie("token", token, { httpOnly: true });
-            res.redirect("/");
-
-        } catch (err) {
-            res.render("login", { data: { email }, error: err.message });
-            return;
-        }
-    },
-
-    logout: (req, res) => {
-        res.clearCookie("token");
-        res.redirect("/");
     }
+);
 
-}
+userRouter.get("/login", isGuest(), (req, res) => {
+    res.render("login");
+});
+
+userRouter.post("/login", isGuest(), async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        if (!email || !password) {
+            throw new Error("All fields are required");
+        }
+
+        const user = await login(email, password);
+        const token = createToken(user);
+
+        res.cookie("token", token, { httpOnly: true });
+        res.redirect("/");
+
+    } catch (err) {
+        res.render("login", { data: { email }, error: err.message });
+        return;
+    }
+});
+
+userRouter.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    res.redirect("/");
+});
+
+module.exports = { userRouter }
