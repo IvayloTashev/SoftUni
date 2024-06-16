@@ -24,7 +24,7 @@ async function create(data, authorId) {
 }
 
 async function update(id, data, userId) {
-    const record = await Data.findOne(id);
+    const record = await Data.findById(id);
 
     if(!record) {
         throw new ReferenceError('Record not found' + id)
