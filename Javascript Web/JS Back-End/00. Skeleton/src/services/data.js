@@ -42,8 +42,8 @@ async function update(id, data, userId) {
     return record;
 }
 
-async function deleteById(id) {
-    const record = await Data.findOne(id);
+async function deleteById(id, userId) {
+    const record = await Data.findById(id);
 
     if(!record) {
         throw new ReferenceError('Record not found' + id)
