@@ -1,0 +1,41 @@
+<section id="edit-page">
+    <div class="editSection">
+        <div class="info">
+            <h2>"I've Always Wanted To Use That Spell."</h2>
+        </div>
+
+        <form method="post" class="editForm">
+            <h2>Edit Post</h2>
+            <ul class="noBullet">
+                <li>
+                    <label for="title">Name:</label>
+                    <input type="text" class="inputFields" id="name" name="name" {{#if data.name}}value="{{data.name}}"{{/if}} />
+                </li>
+                <li>
+                    <label for="key-word">Species:</label>
+                    <input type="text" class="inputFields" id="species" name="species" {{#if data.species}}value="{{data.species}}"{{/if}} />
+                </li>
+                <li>
+                    <label for="location">Skin Colour:</label>
+                    <input type="text" class="inputFields" id="skin" name="skinColor" {{#if data.skinColor}}value="{{data.skinColor}}"{{/if}} />
+                </li>
+                <li>
+                    <label for="date">Eye Colour:</label>
+                    <input type="text" class="inputFields" id="eye" name="eyeColor" {{#if data.eyeColor}}value="{{data.eyeColor}}"{{/if}} />
+                </li>
+                <li>
+                    <label for="image">Creature Image:</label>
+                    <input type="text" class="inputFields" id="image" name="image" {{#if data.image}}value="{{data.image}}"{{/if}} />
+                </li>
+                <li>
+                    <label for="description">Description:</label>
+                    <textarea id="description" class="inputFields" name="description">{{#if data.description}}{{data.description}}{{/if}}</textarea>
+                </li>
+                <li id="center-btn">
+                    <button id="edit-btn">Edit</button>
+                </li>
+            </ul>
+        </form>
+
+    </div>
+</section>
