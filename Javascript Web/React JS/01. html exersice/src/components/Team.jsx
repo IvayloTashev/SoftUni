@@ -1,3 +1,5 @@
+import Person from "./Person";
+
 export default function Team() {
     return (
         <section className="team section-padding" data-scroll-index='3'>
@@ -11,24 +13,11 @@ export default function Team() {
                         </div>
                         <div className="section-content text-center">
                             <div className="row">
-                                <div className="col-md-4">
-                                    <div className="team-detail wow bounce" data-wow-delay="0.2s"> <img src="images/user1.jpg" className="img-fluid" />
-                                        <h4>Nitu Singh</h4>
-                                        <p>Marketing Specialist</p>
-                                    </div>
-                                </div>
-                                <div className="col-md-4">
-                                    <div className="team-detail wow bounce" data-wow-delay="0.4s"> <img src="images/user2.jpg" className="img-fluid" />
-                                        <h4>Yogesh Singh</h4>
-                                        <p>CEO & Founder</p>
-                                    </div>
-                                </div>
-                                <div className="col-md-4">
-                                    <div className="team-detail wow bounce" data-wow-delay="0.6s"> <img src="images/user3.jpg" className="img-fluid" />
-                                        <h4>Nisha Sharma</h4>
-                                        <p>Web Developer</p>
-                                    </div>
-                                </div>
+
+                                <Person image={'images/user1.jpg'} name={'Nitu Singh'} position={'Marketing Specialist'} ></Person>
+                                <Person image={'images/user2.jpg'} name={'Yogesh Singh'} position={'CEO & Founder'} ></Person>
+                                <Person image={'images/user3.jpg'} name={'Nisha Sharma'} position={'Web Developer'} ></Person>
+
                             </div>
                         </div>
                     </div>
