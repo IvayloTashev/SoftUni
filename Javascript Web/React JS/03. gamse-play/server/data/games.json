@@ -1,0 +1,26 @@
+{
+    "0533452e-b9ed-432e-8efa-6fe65b077eca": {
+        "title": "Cover Fire",
+        "category": "Action",
+        "maxLevel": "4",
+        "imageUrl": "/images/avatar-1.jpg",
+        "summary": "Ala bala",
+        "_id": "0533452e-b9ed-432e-8efa-6fe65b077eca"
+    },
+    "bc47d6c4-5de5-495e-8b06-151d550c4f04": {
+        "title": "Diablo 2",
+        "category": "RPG",
+        "maxLevel": "99",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Diablo_II_Coverart.png/220px-Diablo_II_Coverart.png",
+        "summary": "Ala bala",
+        "_id": "bc47d6c4-5de5-495e-8b06-151d550c4f04"
+    },
+    "68ed38c2-4b9d-44bf-9a75-7bff4bfe058d": {
+        "title": "WoW",
+        "category": "MMORPG",
+        "maxLevel": "60",
+        "imageUrl": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/09/world-of-warcraft-world-revamp-ion-hazzikostas.jpg",
+        "summary": "Ala bala",
+        "_id": "68ed38c2-4b9d-44bf-9a75-7bff4bfe058d"
+    }
+}
