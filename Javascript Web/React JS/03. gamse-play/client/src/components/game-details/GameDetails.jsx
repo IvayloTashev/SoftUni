@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
-import gamesAPI from "../../api/games-api";
 import commentsApi from "../../api/comments-api";
 import { useGetOneGames } from "../../hooks/useGames";
 
