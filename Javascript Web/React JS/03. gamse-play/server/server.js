@@ -1394,12 +1394,12 @@
             }
         },
         comments: {
-            "0a272c58-b7ea-4e09-a000-7ec988248f66": {
-                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-                content: "Great recipe!",
-                recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
-                _createdOn: 1614260681375,
-                _id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
+            "5a3e0a2a-576e-4219-b7a2-89ef2091baa5": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "gameId": "bc47d6c4-5de5-495e-8b06-151d550c4f04",
+                "text": "amazing",
+                "_createdOn": 1722597475524,
+                "_id": "5a3e0a2a-576e-4219-b7a2-89ef2091baa5"
             }
         },
         records: {
