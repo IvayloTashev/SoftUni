@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useForm (initialValues, submitCallback) {
+export function useForm(initialValues, submitCallback) {
     const [values, setValues] = useState(initialValues);
 
     const changeHandler = (e) => {
@@ -14,6 +14,8 @@ export function useForm (initialValues, submitCallback) {
         e.preventDefault();
 
         submitCallback(values);
+
+        setValues(initialValues)
     }
 
     return {
