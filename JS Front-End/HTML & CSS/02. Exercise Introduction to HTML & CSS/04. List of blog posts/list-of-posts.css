@@ -1,0 +1,9 @@
+p.author {
+    font-style: italic;
+    color: grey;
+}
+
+span {
+    font-weight: bold;
+    font-style: normal;
+}
