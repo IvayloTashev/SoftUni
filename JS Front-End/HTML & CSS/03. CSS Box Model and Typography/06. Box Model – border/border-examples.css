@@ -1,0 +1,26 @@
+.solid p {
+    padding: 30px;
+    border: 4px solid black;
+    width: 300px;
+}
+
+.dashed p {
+    padding: 30px;
+    border: 3px dashed #333;
+    width: 300px;
+}
+
+.dotted p {
+    padding: 30px;
+    border: 2px dotted #666;
+    width: 300px;
+}
+
+.mixed p {
+    padding: 30px;
+    border-top: 3px dashed #333;
+    border-bottom: 3px dashed #333;
+    border-left: 4px solid #000;
+    border-right: 4px solid #000;
+    width: 300px;
+}
