@@ -1,0 +1,27 @@
+section {
+    border: 2px solid #000;
+    padding: 2em;
+    position: relative;
+}
+
+div.item {
+    border: 1px solid #333;
+    padding: 0.5em;
+    width: 5em;
+    height: 5em;
+}
+
+section.relative div.item:nth-of-type(even) {
+    position: relative;
+    left: 4em;
+    top: 4em;
+    background: lightgreen;
+}
+
+section.absolute div.item:nth-of-type(even) {
+    position: absolute;
+    left: 4em;
+    top: 4em;
+    background: lightgreen;
+}
+
