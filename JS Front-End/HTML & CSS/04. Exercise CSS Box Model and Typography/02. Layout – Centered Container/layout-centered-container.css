@@ -1,0 +1,23 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+    border: 3px solid green;
+}
+
+section {
+    border: 3px solid blue;
+    margin: 40px 160px;
+}
+
+div {
+    border: 3px solid black;
+    margin: 40px;
+}
+
+p {
+    font-weight: bold;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 1.5rem;
+}

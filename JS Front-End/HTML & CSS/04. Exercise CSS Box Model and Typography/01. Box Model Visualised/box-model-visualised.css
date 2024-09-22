@@ -1,0 +1,37 @@
+div {
+    border: 1px dashed #4f524f;
+    margin: 40px;
+    position: relative;
+}
+
+section.container {
+    width: 50%;
+    margin: 50px auto;
+}
+
+.margin {
+    background-color: #fb936b;
+}
+
+.border {
+    background-color: #fbebc3;
+}
+
+.padding {
+    background-color: #83eb83;
+}
+
+.content {
+    background-color: #a3d3e3;
+    padding: 10px;
+    text-align: center;
+    font-size:18px;
+}
+
+.absolute {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    margin: 0;
+    font-size:18px;
+}
