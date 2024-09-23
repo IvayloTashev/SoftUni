@@ -1,0 +1,21 @@
+
+div.wrapper-first {
+    border: 1px solid silver;
+    width: 70%;
+    margin: 30px auto 0px auto;
+}
+
+div.wrapper {
+    border: 1px solid silver;
+    border-top: none;
+    width: 70%;
+    margin: auto;
+}
+
+summary {
+    font-weight: bold;
+}
+
+details {
+    padding: 20px;
+}

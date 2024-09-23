@@ -1,0 +1,51 @@
+a {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 20px;
+    margin-left: 20px;
+    font-size: 0.7rem;
+    text-align: center;
+
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin: 30px 0px 20px 20px;
+}
+
+.one-link,
+.edit-link,
+.one-btn,
+.edit-btn {
+    background-color: #c5c5c5;
+}
+
+.two-link, .two-btn {
+    background-color: #ff9b00;
+}
+
+.three-link, .three-btn {
+    background-color: #f9f9cc;
+}
+
+.button {
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 20px;
+    margin-left: 20px;
+    font-size: 0.7rem;
+    font-weight: 300;
+    font-family: inherit;
+}
+
+.four-btn {
+    background-color: white;
+}
+
+
+section {
+    box-sizing: border-box;
+}
