@@ -1,0 +1,24 @@
+.image-holder {
+    background-image: url(./image1.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+}
+
+ body {
+    margin: 0;
+ }
+
+.description {
+    position: absolute;
+    left: 270px;
+    top: 145px;
+}
+
+h2, p {
+    color: white;
+    text-align: center;
+    margin: 0;
+}
