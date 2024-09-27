@@ -1,0 +1,38 @@
+.flex-container {
+    width: 400px;
+    height: 200px;
+    padding: 1em;
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.flex-container .flex-item {
+    background: #eee;
+    padding: 20px;
+    border: 2px solid #000;
+}
+
+.align-self-flex-start {
+    align-self: flex-start;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.align-self-baseline .flex-item {
+    align-self: baseline;
+}
+.p86 {
+    font-size: 86px;
+}
+
+.p48 {
+    font-size: 48px;
+}
+
+.p100 {
+    font-size: 100px;
+}
