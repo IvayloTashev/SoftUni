@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(224, 221, 221);
+}
+
+div.form-container {
+    background-color: white;
+    box-shadow: 0 0 0.5em 0 rgb(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 500px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.7;
+
+}
+
+form label::before {
+
+}
+
+input[type=email],
+input[type=password] {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(199, 198, 198);
+}
+
+form p.description {
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+input[type=submit] {
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+
+
