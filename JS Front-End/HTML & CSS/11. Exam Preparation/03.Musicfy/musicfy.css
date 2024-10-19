@@ -48,11 +48,13 @@ div.navbar ul {
 
 div.navbar ul li {
     list-style-type: none;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 div.heading {
     background-color: #1db954;
-    height: 350px;
+    height: 280px;
     text-align: center;
     padding: 50px;
     position: relative;
@@ -65,11 +67,11 @@ div.heading h1 {
 div.image-holder img {
     position: absolute;
     width: 43%;
-    top: 100px;
+    top: 120px;
 }
 
 div.plans {
-    width: 60%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
@@ -83,7 +85,7 @@ div.single-plan {
     background-color: white;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    flex: 0 1 35%;
+    flex: 0 1 40%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -136,4 +138,92 @@ div.plan-price {
     align-items: center;
     padding: 20px;
     margin-top: 20px;
+}
+
+.text-center p {
+    margin: auto;
+}
+
+.info-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 400px auto 0 auto;
+    gap: 70px;
+}
+
+.additonal-info {
+    flex: 0 1 60%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.additonal-info p {
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+
+.info-container img {
+    width: 100%;
+    flex: 0 1 25%
+}
+
+div.premium-plan {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 100px auto;
+}
+
+.premium-plan h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.premium-plan > p {
+    text-align: center;
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.row p {
+    font-weight: 500;
+}
+
+div.row:nth-of-type(even) {
+    background-color: #81d8a0;
+}
+
+div.row:nth-of-type(odd) {
+    background-color: #cccbcb;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 20%;
+    margin-right: 60px;
+}
+
+footer {
+    background-color: black;
+    padding: 30px;
+    text-align: center;
+    color: white;
 }
