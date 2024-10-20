@@ -1,0 +1,52 @@
+@media screen and (max-width: 600px) {
+    header nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    div.pair {
+        flex-wrap: wrap;
+    }
+
+    div.planet {
+        flex: 0 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.planet img {
+        flex: 0 0 60%;
+        height: 200px;
+        align-self: center;
+    }
+
+    div.planet div.planet_info {
+        flex: 0 0 40%;
+        text-align: center;
+
+    }
+
+    section.news ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section.news ul li {
+        text-align: center;
+    }
+
+    footer nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer nav a {
+        border: none !important;
+    }
+
+
+
+}
