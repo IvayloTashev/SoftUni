@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+PE:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+PE:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body,
+input, 
+textarea{
+    font-family: 'Playwrite PE', sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+ul.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+    justify-content: center;
+}
+
+li.nav-item {
+    list-style-type: none;
+    color: #405f9c;
+    font-weight: bold;
+}
+
+li.nav-item:nth-of-type(1) {
+    color: #ff3946;
+}
+
+header>a {
+    margin: 0 auto;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: 3px solid red;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #405f9c;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 80px 50px 50px 80px;
+}
+
+.hero-description {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 1 45%;
+}
+
+.hero-img {
+    flex: 0 1 55%;
+}
+
+.hero-img img {
+    width: 100%;
+}
+
+div.hero-text h1 {
+    color: #314584;
+    font-size: 3.6rem;
+    margin-bottom: 20px;
+}
+
+div.hero-text p {
+    opacity: 0.7;
+}
+
+div.hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+div.hero-btns a {
+    padding: 10px 25px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+div.hero-btns a:nth-of-type(1) {
+    background-color: #ff3946;
+    color: white;
+}
+
+div.hero-btns a:nth-of-type(2) {
+    color: #354584
+}
+
+.design-development {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    width: 99%;
+}
+
+.design,
+.development {
+    margin: 0 10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.design img,
+.development img {
+    width: 200px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.design h2,
+.development h2 {
+    color: #314584;
+    text-align: center;
+}
+
+.design p,
+.development p {
+    color: #314584;
+    font-size: 0.9rem;
+    margin-bottom: 50px;
+}
+
+.absolute {
+    position: absolute;
+    width: 200px;
+}
+
+img.absolute:nth-of-type(1) {
+    left: -60px;
+    top: 270px;
+}
+
+img.absolute:nth-of-type(2) {
+    right: -60px;
+    top: 700px;
+}
+
+.about-us {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-us>img {
+    width: 400px;
+    margin-top: 50px;
+}
+
+.our-company,
+.contact-us {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.our-company h5,
+.contact-us h5 {
+    color: #ff3a4c;
+}
+
+.our-company h2,
+.contact-us h2 {
+    color: #314584;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.our-company p {
+    color: #314584;
+    text-align: center;
+    width: 63%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 1000px;
+    margin-bottom: 20px;
+}
+
+form input,
+form textarea {
+    background-color: #314584;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+form textarea {
+    height: 150px;
+    margin-top: 10px;
+}
+
+footer {
+    background-color: #314584;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+    align-items: center;
+}
+
+footer nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+footer nav ul li {
+    list-style-type: none;
+}
+
+footer p {
+    font-weight: 200;
+    font-size: 0.7rem;
+}
+
