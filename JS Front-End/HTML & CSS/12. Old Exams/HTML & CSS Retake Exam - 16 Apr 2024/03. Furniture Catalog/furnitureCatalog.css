@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Kode Mono';
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+body {
+    font-family: 'PT Sans';
+}
+
+div.site-header-container {
+    background-image: url(./images/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+div.content-header-container {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 100px;
+    padding: 0 50px;
+}
+
+div.nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 30px;
+    align-items: center;
+}
+
+div.img-holder a img {
+    width: 100px;
+}
+
+div.nav-container nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+div.nav-container nav ul li {
+    list-style-type: none;
+    font-weight: 900;
+}
+
+div.hero-container {
+    margin: 0 auto 150px auto;
+    width: 1200px;
+    padding: 0 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+div.hero-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+div.hero-container p {
+    font-weight: 600;
+}
+
+div.hero-container a {
+    background-color: #e7eef0;
+    color: #686666;
+    padding: 10px;
+    margin: auto;
+    width: fit-content;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 7px;
+}
+
+div.site-main-container {
+    background-color: #60acc1;
+}
+
+div.content-main-container {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
+div.content-main-container div.heading {
+    text-align: center;
+}
+
+div.content-main-container div.heading h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+div.content-main-container div.card-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.content-main-container .card-container .card {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 40%;
+}
+
+.content-main-container .card-container .card .img-holder {
+    flex: 0 0 50%;
+}
+
+.content-main-container .card-container .card .img-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-main-container .card-container .card .description {
+    flex: 0 0 50%;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.content-main-container .card-container .card .description h3 {
+    text-align: center;
+}
