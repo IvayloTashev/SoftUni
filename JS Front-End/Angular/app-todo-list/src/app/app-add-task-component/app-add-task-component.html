@@ -8,5 +8,22 @@
         <input type="button" value="Add task" (click)="addTaskHandler()">
     </div>
 
+    <div class="task-list-container">
+
+        <h2>TASKS</h2>
+
+        <ul>
+            @for (task of taskArr; track $index) {
+            <li>
+                <p>{{task}}</p>
+                <div class="btns">
+                    <button>Complete</button>
+                    <button>Edit</button>
+                </div>
+            </li>
+            }
+        </ul>
+    </div>
+
 
 </div>

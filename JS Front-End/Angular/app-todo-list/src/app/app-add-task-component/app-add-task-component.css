@@ -40,3 +40,66 @@ div.input-wrapper input[type='button'] {
 div.input-wrapper input[type='button']:hover {
     border: 3px solid rgb(1, 110, 1);
 }
+
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+    align-items: center;
+    padding: 20px;
+}
+
+.task-list-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 0;
+}
+
+.task-list-container li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.task-list-container li p {
+    flex: 0 0 70%;
+    font-size: 1.1rem;
+}
+
+.btns {
+    flex: 0 0 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btns button {
+    flex: 0 0 calc(50% - 10px);
+    font-weight: bold;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
+.btns button:nth-of-type(1):hover {
+    background-color: green;
+    color: white;
+}
+
+.btns button:nth-of-type(2):hover {
+    background-color: orange;
+    color: white;
+}
+
+
+

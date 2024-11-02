@@ -12,9 +12,11 @@ styleUrl: './app-add-task-component.css',
 export class AddTaskComponent {
 
     task: string = '';
+    taskArr: string[] = [];
 
-    addTaskHandler(): void {
-        console.log(this.task);
+    addTaskHandler() {
+        this.taskArr.push(this.task);
+        console.log(this.taskArr);
         this.task = '';
     }
     
