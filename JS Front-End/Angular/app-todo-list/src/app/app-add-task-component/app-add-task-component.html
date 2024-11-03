@@ -17,7 +17,7 @@
             <li>
                 <p>{{task}}</p>
                 <div class="btns">
-                    <button>Complete</button>
+                    <button (click)="completeTaskHandler($index)">Complete</button>
                     <button>Edit</button>
                 </div>
             </li>
