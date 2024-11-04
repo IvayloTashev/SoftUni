@@ -5,7 +5,10 @@ div.container {
     align-items: center;
     padding: 20px;
     width: 70%;
-    margin: auto;
+    margin: 30px auto;
+    background-color: rgb(248, 238, 218);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 div.input-wrapper {
@@ -26,6 +29,8 @@ div.input-wrapper label {
 div.input-wrapper input[type='text'] {
     flex: 0 0 60%;
     padding: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
 }
 
 div.input-wrapper input[type='button'] {
@@ -41,7 +46,8 @@ div.input-wrapper input[type='button']:hover {
     border: 3px solid rgb(1, 110, 1);
 }
 
-.task-list-container {
+.task-list-container,
+.completed-tasks-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -71,8 +77,9 @@ div.input-wrapper input[type='button']:hover {
     background-color: white;
 }
 
-.task-list-container li p {
-    flex: 0 0 70%;
+.task-list-container li p,
+.task-list-container li input {
+    flex: 0 0 65%;
     font-size: 1.1rem;
 }
 
@@ -89,6 +96,13 @@ div.input-wrapper input[type='button']:hover {
     font-weight: bold;
     border: 2px solid grey;
     border-radius: 10px;
+    width: 85px;
+    height: 55px;
+}
+
+.save-btn {
+    flex: 0 0 100% !important;
+    width: 100% !important;
 }
 
 .btns button:nth-of-type(1):hover {
@@ -101,5 +115,18 @@ div.input-wrapper input[type='button']:hover {
     color: white;
 }
 
+.completed-tasks-container {
+    width: 60%;
+}
 
+.completed-tasks-container h2 {
+    color: green;
+}
 
+.completed-tasks-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    list-style-type: none;
+}

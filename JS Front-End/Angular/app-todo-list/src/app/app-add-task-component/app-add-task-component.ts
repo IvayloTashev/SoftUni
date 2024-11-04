@@ -12,14 +12,29 @@ import { FormsModule } from "@angular/forms";
 export class AddTaskComponent {
 
     task: string = '';
-    taskArr: string[] = [];
+    taskArr: { name: string, isEditing: boolean }[] = [];
+    completedArr: string[] = [];
 
     addTaskHandler() {
-        this.taskArr.push(this.task);
+        if (this.task.length == 0) {
+            return
+        }
+
+        this.taskArr.push({ name: this.task, isEditing: false });
         this.task = '';
     }
 
-    completeTaskHandler(index: any) {
+    completeTaskHandler(index: number) {
+        let currentTask = this.taskArr[index].name;
+        this.completedArr.push(currentTask);
         this.taskArr.splice(index, 1);
+    }
+
+    editTaskHandler(index: number) {
+        this.taskArr[index].isEditing = true;
+    }
+
+    saveTaskHandler(index: number) {
+        this.taskArr[index].isEditing = false;
     }
 }
