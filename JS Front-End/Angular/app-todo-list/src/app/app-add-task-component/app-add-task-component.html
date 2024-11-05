@@ -19,7 +19,7 @@
             <li>
                 <input type="text" [(ngModel)]="taskObj.name">
                 <div class="btns">
-                    <button class="save-btn" (click)="saveTaskHandler($index)"><i class="fa-regular fa-floppy-disk"> Save</i></button>
+                    <button class="save-btn" (click)="saveTaskHandler($index)"><i class="fa-regular fa-floppy-disk"></i> Save</button>
                 </div>
             </li>
 
@@ -27,8 +27,9 @@
             <li>
                 <p>{{taskObj.name}}</p>
                 <div class="btns">
-                    <button (click)="completeTaskHandler($index)"><i class="fa-solid fa-check"> Done</i></button>
-                    <button (click)="editTaskHandler($index)"><i class="fa-solid fa-pen-to-square"> Edit</i></button>
+                    <button (click)="completeTaskHandler($index)"><i class="fa-solid fa-check"></i> Done</button>
+                    <button (click)="editTaskHandler($index)"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                    <button (click)="deleteTaskHandler($index)"><i class="fa-solid fa-trash"></i> Delete</button>
                 </div>
             </li>
             }

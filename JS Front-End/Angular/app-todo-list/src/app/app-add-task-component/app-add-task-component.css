@@ -72,7 +72,7 @@ div.input-wrapper input[type='button']:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     border: 1px solid grey;
-    padding: 10px;
+    padding: 5px 10px;
     border-radius: 10px;
     background-color: white;
 }
@@ -92,7 +92,7 @@ div.input-wrapper input[type='button']:hover {
 }
 
 .btns button {
-    flex: 0 0 calc(50% - 10px);
+    flex: 0 0 30%;
     font-weight: bold;
     border: 2px solid grey;
     border-radius: 10px;
@@ -112,6 +112,11 @@ div.input-wrapper input[type='button']:hover {
 
 .btns button:nth-of-type(2):hover {
     background-color: orange;
+    color: white;
+}
+
+.btns button:nth-of-type(3):hover {
+    background-color: red;
     color: white;
 }
 

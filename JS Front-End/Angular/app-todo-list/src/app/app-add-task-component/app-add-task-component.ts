@@ -37,4 +37,8 @@ export class AddTaskComponent {
     saveTaskHandler(index: number) {
         this.taskArr[index].isEditing = false;
     }
+
+    deleteTaskHandler(index: number) {
+        this.taskArr.splice(index, 1);
+    }
 }
