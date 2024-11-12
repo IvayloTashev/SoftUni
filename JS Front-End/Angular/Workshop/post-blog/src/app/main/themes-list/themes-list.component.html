@@ -1,5 +1,10 @@
 <main>
     <div class="theme-title">
+        @if (isLoading) {
+        <div class="loader">
+            <app-loader></app-loader>
+        </div>
+        } @else {
         @for (theme of themes; track $index) {
         <div class="theme-container">
             <div class="theme-name-wrapper">
@@ -23,6 +28,7 @@
                 </div>
             </div>
         </div>
+        }
         }
     </div>
 </main>

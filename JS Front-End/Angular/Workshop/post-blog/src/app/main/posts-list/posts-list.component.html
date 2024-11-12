@@ -4,6 +4,9 @@
             Recent posts
         </h2>
         <div>
+            @if (isLoading) {
+            <app-loader></app-loader>
+            } @else {
             @for (post of posts; track $index) {
             <div class="aside-theme">
                 <a href="#">
@@ -12,6 +15,7 @@
                     <p><span>{{post.created_at}}</span></p>
                 </a>
             </div>
+            }
             }
         </div>
     </div>
