@@ -61,7 +61,7 @@
                 </div>
             }
 
-            <button [disabled]="form.invalid">Login</button>
+            <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : '#234465'}">Login</button>
 
             <p class="text-center">
                 Have an account?

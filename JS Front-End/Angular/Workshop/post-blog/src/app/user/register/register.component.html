@@ -1,64 +1,134 @@
 <div class="container">
-    <form class="register" action="" method="post">
+
+    <form class="register" [formGroup]="form" (ngSubmit)="register()">
 
         <fieldset>
             <h2>Registration Form</h2>
-
-            <!-- username -->
+                <!-- username -->
             <p class="field field-icon">
                 <label for="username"><span><i class="fas fa-user"></i></span></label>
-                <input class="input-error" type="text" name="username" id="username" placeholder="Johny">
-            </p>
-            <p class="error">
-                Username is required!
+                <input
+                [class]="isRequired('username') || isNotMinLength('username') ? 'input-error': ''"
+                type="text" 
+                name="username" 
+                id="username" 
+                placeholder="Johny" 
+                formControlName="username"
+                />
             </p>
 
-            <!-- email -->
+            @if (form.get('username')?.touched) {
+            <div>
+                @if (form.get('username')?.errors?.['required']) {
+                <p class="error">
+                    Username is required!
+                </p>
+                }
+
+                @if (form.get('username')?.errors?.['minlength']) {
+                <p class="error">
+                    Username must be at least 5 characters!
+                </p>
+                }
+            </div>
+            }
+                <!-- email -->
             <p class="field field-icon">
                 <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
+                <input
+                [class]="isRequired('email') || isEmailNotInvalid ? 'input-error': ''"
+                type="email" 
+                name="email" 
+                id="email" 
+                placeholder="john.doe@gmail.com" 
+                formControlName="email"
+                />
             </p>
-            <!-- <p class="error">
-                Email is required!
-            </p>
-            <p class="error">
-                Email is not valid!
-            </p> -->
 
-            <!-- telephone -->
+            @if (form.get('email')?.touched) {
+                <div>
+                    @if (form.get('email')?.errors?.['required']) {
+                    <p class="error">
+                        Email is required!
+                    </p>
+                    }
+    
+                    @if (form.get('email')?.errors?.['emailValidator']) {
+                    <p class="error">
+                        Email is not valid!
+                    </p>
+                    }
+                </div>
+                }
+                <!-- tel -->
             <p class="field field-icon">
                 <label for="tel"><span><i class="fas fa-phone"></i></span></label>
                 <select name="select-tel" id="select-tel" class="tel">
                     <option value="00359">+359</option>
                 </select>
-                <input type="text" name="tel" id="tel" placeholder="885 888 888">
+                <input 
+                type="text" 
+                name="tel" id="tel" 
+                placeholder="885 888 888" 
+                formControlName="tel"
+                />
             </p>
 
-            <!-- password -->
+            <div formGroupName="passGroup">
+
+                  <!-- password -->
             <p class="field field-icon">
                 <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                <input type="password" name="password" id="password" placeholder="******">
+                <input type="password" name="password" id="password" placeholder="******" formControlName="password"
+                [class]="(passGroup?.get('password')?.touched && isPassRequired('password')) ||
+                (passGroup?.get('password')?.touched && isPassNotMinLength('password')) 
+                ? 'input-error' : ''"
+                />
             </p>
-            <!-- <p class="error">
-                Password is required!
-            </p>
-            <p class="error">
-                Password must be at least 4 characters!
-            </p> -->
 
-            <!-- rePassword -->
+            @if (passGroup?.get('password')?.touched) {
+                <div>
+                    @if (isPassRequired('password')) {
+                    <p class="error">
+                        Password is required!
+                    </p>
+                    }
+
+                    @if (isPassNotMinLength('password')) {
+                        <p class="error">
+                            Password must be at least 5 characters!
+                        </p>
+                        }
+                </div>
+                }
+
+                <!-- rePassword -->
             <p class="field field-icon">
                 <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-                <input type="password" name="rePassword" id="rePassword" placeholder="******">
+                <input type="password" name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword"
+                [class]="(passGroup?.get('rePassword')?.touched && isPassRequired('password')) ||
+                (passGroup?.get('password')?.touched && passGroup?.errors?.['matchPasswordsValidator']) 
+                ? 'input-error' : ''"
+                />
             </p>
-            <!-- <p class="error">Repeat Password does not match password!</p> -->
 
-            <button disabled>Create Account</button>
+            @if(passGroup?.get('rePassword')?.touched) {
+                <div>
+                    @if(passGroup?.errors?.['matchPasswordsValidator'] || isPassRequired('rePassword')) {
+                        <p class="error">Repeat Password does not match password!</p>
+                    }
+                </div>
+            }
+
+            <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : '#234465'}">Create
+                Account</button>
 
             <p class="text-center">
                 Have an account?
                 <a routerLink="/login">Log In</a>
             </p>
+            </div>
+          
 
         </fieldset>
     </form>

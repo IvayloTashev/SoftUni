@@ -15,7 +15,6 @@ import { DOMAINS } from '../../constants';
 export class LoginComponent {
   domains = DOMAINS;
   
-
   constructor(private userService: UserService, private router: Router) { }
 
   login(form: NgForm) {
