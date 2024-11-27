@@ -7,6 +7,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { NewThemeComponent } from './themes/new-theme/new-theme.component';
 import { MainComponent } from './main/main.component';
 import { ThemeContentComponent } from './themes/theme-content/theme-content.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -20,7 +21,7 @@ export const routes: Routes = [
         {path: '', component: MainComponent},
         {path: ':themeId', component: ThemeContentComponent}
     ]},
-    {path: 'add-theme', component: NewThemeComponent},
+    {path: 'add-theme', component: NewThemeComponent, canActivate: [AuthGuard]},
 
     {path: '404', component: ErrorComponent},
     {path: '**', redirectTo: '/404'},

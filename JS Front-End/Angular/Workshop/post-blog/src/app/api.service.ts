@@ -32,4 +32,10 @@ export class ApiService {
     let url = `${apiUrl}/themes/${id}`;
     return this.http.get<Theme>(url);
   }
+
+  createTheme(themeName: string, postText: string) {
+    const { apiUrl } = environment;
+    const payload = {themeName, postText};
+    return this.http.post(`${apiUrl}/themes`, payload)
+  }
 }
