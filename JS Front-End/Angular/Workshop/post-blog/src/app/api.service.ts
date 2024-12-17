@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment.development';
 import { Post } from './types/post';
 import { Theme } from './types/theme';
 
@@ -11,8 +10,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getPosts(limit?: number) {
-    const { apiUrl } = environment;
-    let url = `${apiUrl}/posts`;
+    let url = `/api/posts`;
 
     if (limit) {
       url += `?limit=${limit}`
@@ -22,20 +20,31 @@ export class ApiService {
   }
 
   getThemes() {
-    const { apiUrl } = environment;
-    let url = `${apiUrl}/themes`;
+    let url = `/api/themes`;
     return this.http.get<Theme[]>(url);
   }
 
   getSingleTheme(id: string) {
-    const { apiUrl } = environment;
-    let url = `${apiUrl}/themes/${id}`;
+    let url = `/api/themes/${id}`;
     return this.http.get<Theme>(url);
   }
 
   createTheme(themeName: string, postText: string) {
-    const { apiUrl } = environment;
     const payload = {themeName, postText};
-    return this.http.post(`${apiUrl}/themes`, payload)
+    return this.http.post(`/api/themes`, payload)
+  }
+
+  updateTheme(themeId: string, themeName: string, postText: string) {
+    const payload = {themeName, postText};
+    return this.http.post(`/api/themes/${themeId}`, payload)
+  }
+
+  editTheme(themeId: string, postId: string) {
+    const payload = {};
+    return this.http.post(`/api/themes/${themeId}/posts/${postId}`, payload)
+  }
+
+  deleteTheme(themeId: string, postId: string) {
+    return this.http.delete(`/api/themes/${themeId}/posts/${postId}`)
   }
 }
