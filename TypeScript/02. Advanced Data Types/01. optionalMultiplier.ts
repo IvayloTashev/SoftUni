@@ -1,4 +1,6 @@
 function optionalMultiplier(x?: string | number, y?: string | number, z?: string | number): number {
+    
+    //Solution 1
     let res = 1;
 
     if (x) {
@@ -23,6 +25,14 @@ function optionalMultiplier(x?: string | number, y?: string | number, z?: string
     }
 
     return res;
+
+    //Solution 2
+
+    // let num1 = x == undefined ? 1 : Number(x);
+    // let num2 = y == undefined ? 1 : Number(y);
+    // let num3 = z == undefined ? 1 : Number(z);
+
+    // return num1 * num2 * num3;
 }
 
 console.log(optionalMultiplier('3', 5, '10'));
