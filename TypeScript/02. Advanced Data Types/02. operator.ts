@@ -1,21 +1,16 @@
-function operator(param: string | number | string[], operation: 'Index' | 'Length' | 'Add', operand: number): string | number {
+function operator(param: string | number | string[], operation: 'Index' | 'Length' | 'Add', operand: number): string | number | undefined {
 
-    if (operation === 'Index' && (typeof param === 'string' || Array.isArray(param) && param.every(el => typeof el === "string"))) {
-        return param[operand]
+    if (operation === 'Index' && typeof param !== 'number') {
+        return param[operand];
     }
 
-    if (operation === "Length" && (typeof param === "string" || Array.isArray(param) && param.every(el => typeof el === "string"))) {
-        return param.length % operand
+    if (operation === "Length" && typeof param !== 'number') {
+        return param.length % operand;
     }
 
-    if (operation === "Add" && (typeof param === "string" || typeof param === "number")) {
-        if (typeof param === "string") {
-            param = Number(param);
-        }
-        return operand += param
+    if (operation === "Add" && !Array.isArray(param)) {
+        return Number(param) + operand;
     }
-
-    throw new Error('Invalid parameters');
 
 }
 

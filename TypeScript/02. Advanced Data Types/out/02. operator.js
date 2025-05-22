@@ -1,16 +1,13 @@
 "use strict";
 function operator(param, operation, operand) {
-    if (operation === 'Index' && (typeof param === 'string' || Array.isArray(param) && param.every(el => typeof el === "string"))) {
+    if (operation === 'Index' && typeof param !== 'number') {
         return param[operand];
     }
-    if (operation === "Length" && (typeof param === "string" || Array.isArray(param) && param.every(el => typeof el === "string"))) {
+    if (operation === "Length" && typeof param !== 'number') {
         return param.length % operand;
     }
-    if (operation === "Add" && (typeof param === "string" || typeof param === "number")) {
-        if (typeof param === "string") {
-            param = Number(param);
-        }
-        return operand += param;
+    if (operation === "Add" && !Array.isArray(param)) {
+        return Number(param) + operand;
     }
 }
 console.log(operator(['First', 'Second', 'Third'], 'Index', 1));
