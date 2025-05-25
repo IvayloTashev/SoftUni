@@ -23,7 +23,7 @@ function isUser(user: unknown): user is User {
         (user.status === 'Locked' || user.status === 'Unlocked')
 }
 
-let user = { id: 120, username: 'testing', passwordHash: '123456-123456-123456', status: 'Deleted', email: 'something' };
+let user1 = { id: 120, username: 'testing', passwordHash: '123456-123456-123456', status: 'Deleted', email: 'something' };
 let user2 = { id: '1234-abcd-5678', username: 'testing', passwordHash: '123456-123456-123456', status: 'Unlocked' };
 let user3 = { id: '20', username: 'testing', passwordHash: '123456-123456-123456', status: 'Deleted', email: 'something' };
 let user4 = { id: 255, username: 'Pesho', passwordHash: ['asdf1245', 'qrqweggw', '123-4567', '98765432'], status: 'Locked', email: 'something' };
@@ -32,7 +32,7 @@ let user6 = { id: 1344, username: 'wow123', passwordHash: '123456-123456-1234567
 
 
 if (user) {
-    console.log(isUser(user));
+    console.log(isUser(user1));
     console.log(isUser(user2));
     console.log(isUser(user3));
     console.log(isUser(user4));
