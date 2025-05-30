@@ -19,11 +19,11 @@ class BankAccount {
         return this.balance;
     }
 }
-// const account = new BankAccount(100);
-// account.deposit(50);
-// account.withdraw(30);
-// console.log(account.getBalance());
-const account = new BankAccount(20);
+const account = new BankAccount(100);
+account.deposit(50);
+account.withdraw(30);
+console.log(account.getBalance());
+const account2 = new BankAccount(20);
 account.withdraw(30);
 console.log(account.getBalance());
 //# sourceMappingURL=02.%20bankAccount.js.map
