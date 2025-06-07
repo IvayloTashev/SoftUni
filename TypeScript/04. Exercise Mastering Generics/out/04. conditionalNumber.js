@@ -10,4 +10,6 @@ function conditionalNumber(param) {
 conditionalNumber(20.3555);
 conditionalNumber('wow');
 conditionalNumber('a string');
+// conditionalNumber<boolean>(30);
+// conditionalNumber<number>('test');
 //# sourceMappingURL=04.%20conditionalNumber.js.map
