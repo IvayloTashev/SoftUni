@@ -79,6 +79,6 @@ console.log(motel.addRoom(roomA02));
 console.log(motel.bookRoom('A01', util_js_1.SummerMonth.August));
 console.log(motel.bookRoom('A02', util_js_1.SummerMonth.June));
 console.log(motel.getTotalBudget());
-console.log(motel.cancelBooking('A02', util_js_1.SummerMonth.June));
+console.log(motel.cancelBooking('A01', util_js_1.SummerMonth.August));
 console.log(motel.getTotalBudget());
 //# sourceMappingURL=index.js.map

@@ -45,9 +45,6 @@ class MonthlyMotel extends partialMonthlyMotel_1.PartialMonthlyMotel {
             return `Room '${roomNumber}' does not exist.`;
         }
         const bookingIndex = this.bookedRooms.findIndex(booking => booking.room === roomNumber && booking.month === bookedMonth);
-        console.log(`-------`);
-        console.log(bookingIndex);
-        console.log(`-------`);
         if (bookingIndex === -1) {
             return `Room '${roomNumber}' is not booked for '${bookedMonth}'.`;
         }
