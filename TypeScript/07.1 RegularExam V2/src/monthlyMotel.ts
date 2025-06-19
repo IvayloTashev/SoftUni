@@ -34,18 +34,47 @@ export class MonthlyMotel<T extends Months> extends PartialMonthlyMotel {
         return `Value was not a Room.`
     }
 
-    bookRoom(roomNumber: string, bookedMonth: string): string {
+    bookRoom(roomNumber: RoomNumbers, bookedMonth: T): string {
+        let room = this.rooms.get(roomNumber);
 
-        return 'test'
+        if (!room) {
+            return `Room '${roomNumber}' does not exist.`
+        }
+
+        let roomBookings = this.bookedRooms.get(roomNumber)!;
+
+        if (roomBookings.some(room => room === bookedMonth)) {
+            return `Room '${roomNumber}' is already booked for '${bookedMonth}'.`
+        }
+
+        let price = room.totalPrice;
+        this.budget += price;
+        roomBookings.push(bookedMonth);
+        return `Room '${roomNumber}' booked for '${bookedMonth}'.`
     }
 
-    cancelBooking(roomNumber: string, bookedMonth: string): string {
+    cancelBooking(roomNumber: RoomNumbers, bookedMonth: T): string {
+        let room = this.rooms.get(roomNumber);
 
-        return 'test'
+        if (!room) {
+            return `Room '${roomNumber}' does not exist.`
+        }
+
+        let roomBookings = this.bookedRooms.get(roomNumber)!;
+
+        if (!(roomBookings.some(room => room === bookedMonth))) {
+            return `Room '${roomNumber}' is not booked for '${bookedMonth}'.`
+        }
+
+        let cancellationPrice = room.cancellationPrice;
+        this.budget -= cancellationPrice;
+        let filteredRoomBookings = roomBookings.filter(month => month !== bookedMonth);
+        this.bookedRooms.set(roomNumber, filteredRoomBookings);
+        
+        return `Booking cancelled for Room '${roomNumber}' for '${bookedMonth}'.`;
     }
 
     getTotalBudget(): string {
-
         return 'test'
     }
 

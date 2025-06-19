@@ -14,14 +14,12 @@ let roomA02: Room = new AirconditionedRoom(130, 'A02');
 let roomB01: Room = new AirconditionedRoom(50, 'B01');
 console.log(motel.addRoom(roomA02));
 console.log(motel.addRoom(roomB01));
-console.log(motel.logRooms());
-
 // console.log(motel.getTotalBudget());
-// console.log(motel.bookRoom('A02', SummerMonth.August)); 
-// console.log(motel.bookRoom('B01', SummerMonth.July)); 
-// console.log(motel.bookRoom('B01', SummerMonth.September)); 
+console.log(motel.bookRoom('A02', SummerMonth.August)); 
+console.log(motel.bookRoom('B01', SummerMonth.July)); 
+console.log(motel.bookRoom('B01', SummerMonth.September)); 
 // console.log(motel.getTotalBudget());
-// console.log(motel.cancelBooking('B01',SummerMonth.September));  
+console.log(motel.cancelBooking('B01',SummerMonth.September));  
 // console.log(motel.getTotalBudget());
 
 

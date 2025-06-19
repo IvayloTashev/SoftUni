@@ -2,19 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const monthlyMotel_js_1 = require("./monthlyMotel.js");
 const airconditionedRoom_js_1 = require("./contracts/airconditionedRoom.js");
+const util_js_1 = require("./contracts/util.js");
 // EXAMPLE 1
 let motel = new monthlyMotel_js_1.MonthlyMotel();
 let roomA02 = new airconditionedRoom_js_1.AirconditionedRoom(130, 'A02');
 let roomB01 = new airconditionedRoom_js_1.AirconditionedRoom(50, 'B01');
 console.log(motel.addRoom(roomA02));
 console.log(motel.addRoom(roomB01));
-console.log(motel.logRooms());
 // console.log(motel.getTotalBudget());
-// console.log(motel.bookRoom('A02', SummerMonth.August)); 
-// console.log(motel.bookRoom('B01', SummerMonth.July)); 
-// console.log(motel.bookRoom('B01', SummerMonth.September)); 
+console.log(motel.bookRoom('A02', util_js_1.SummerMonth.August));
+console.log(motel.bookRoom('B01', util_js_1.SummerMonth.July));
+console.log(motel.bookRoom('B01', util_js_1.SummerMonth.September));
 // console.log(motel.getTotalBudget());
-// console.log(motel.cancelBooking('B01',SummerMonth.September));  
+console.log(motel.cancelBooking('B01', util_js_1.SummerMonth.September));
+console.log(motel.cancelBooking('B01', util_js_1.SummerMonth.July));
 // console.log(motel.getTotalBudget());
 // EXAMPLE 2
 // let motel = new MonthlyMotel<WinterMonth>();

@@ -29,9 +29,32 @@ class MonthlyMotel extends partialMonthlyMotel_1.PartialMonthlyMotel {
         return `Value was not a Room.`;
     }
     bookRoom(roomNumber, bookedMonth) {
-        return 'test';
+        let room = this.rooms.get(roomNumber);
+        if (!room) {
+            return `Room '${roomNumber}' does not exist.`;
+        }
+        let roomBookings = this.bookedRooms.get(roomNumber);
+        if (roomBookings.some(room => room === bookedMonth)) {
+            return `Room '${roomNumber}' is already booked for '${bookedMonth}'.`;
+        }
+        let price = room.totalPrice;
+        this.budget += price;
+        roomBookings.push(bookedMonth);
+        return `Room '${roomNumber}' booked for '${bookedMonth}'.`;
     }
     cancelBooking(roomNumber, bookedMonth) {
+        let room = this.rooms.get(roomNumber);
+        if (!room) {
+            return `Room '${roomNumber}' does not exist.`;
+        }
+        let roomBookings = this.bookedRooms.get(roomNumber);
+        if (!(roomBookings.some(room => room === bookedMonth))) {
+            return `Room '${roomNumber}' is not booked for '${bookedMonth}'.`;
+        }
+        let cancellationPrice = room.cancellationPrice;
+        this.budget -= cancellationPrice;
+        let filteredRoomBookings = roomBookings.filter(month => month !== bookedMonth);
+        console.log(filteredRoomBookings);
         return 'test';
     }
     getTotalBudget() {
