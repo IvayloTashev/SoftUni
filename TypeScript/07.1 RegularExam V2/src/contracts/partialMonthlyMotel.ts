@@ -2,7 +2,7 @@
 import { decorator5 } from "../decorators.js";
 import { Motel } from "./motel.js";
 
-// @decorator5
+@decorator5
 export abstract class PartialMonthlyMotel implements Motel {
     public static readonly MotelName = 'Motel';
 

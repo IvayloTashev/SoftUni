@@ -54,11 +54,12 @@ class MonthlyMotel extends partialMonthlyMotel_1.PartialMonthlyMotel {
         let cancellationPrice = room.cancellationPrice;
         this.budget -= cancellationPrice;
         let filteredRoomBookings = roomBookings.filter(month => month !== bookedMonth);
-        console.log(filteredRoomBookings);
-        return 'test';
+        this.bookedRooms.set(roomNumber, filteredRoomBookings);
+        return `Booking cancelled for Room '${roomNumber}' for '${bookedMonth}'.`;
     }
     getTotalBudget() {
-        return 'test';
+        let motelNameString = super.getTotalBudget();
+        return `${motelNameString}\nTotal budget: $${this.budget.toFixed(2)}`;
     }
     logRooms() {
         console.log('All rooms in the motel:');

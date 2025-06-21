@@ -70,12 +70,13 @@ export class MonthlyMotel<T extends Months> extends PartialMonthlyMotel {
         this.budget -= cancellationPrice;
         let filteredRoomBookings = roomBookings.filter(month => month !== bookedMonth);
         this.bookedRooms.set(roomNumber, filteredRoomBookings);
-        
+
         return `Booking cancelled for Room '${roomNumber}' for '${bookedMonth}'.`;
     }
 
     getTotalBudget(): string {
-        return 'test'
+        let motelNameString = super.getTotalBudget();
+        return `${motelNameString}\nTotal budget: $${this.budget.toFixed(2)}`
     }
 
     logRooms(): void {

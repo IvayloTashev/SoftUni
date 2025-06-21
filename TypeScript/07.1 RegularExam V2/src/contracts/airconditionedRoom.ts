@@ -16,12 +16,12 @@ export class AirconditionedRoom implements Room {
         this._price = val;
     }
 
-    // @decorator2
+    @decorator2
     public get totalPrice(): number {
         return this._price;
     }
 
-    // @decorator3
+    @decorator3
     public get cancellationPrice(): number {
         return this._price;
     }
