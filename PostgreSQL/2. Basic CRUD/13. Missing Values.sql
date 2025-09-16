@@ -1,12 +1,13 @@
-INSERT INTO 
-    departments(department, manager_id)
+SELECT
+	id,
+	first_name, 
+	last_name
+	
+FROM
+	employees
 
-VALUES 
-    ('Finance', 3),
-	('Information Services', 42),
-	('Document Control', 90),
-	('Quality Assurance', 274),
-	('Facilities and Maintenance', 218),
-	('Shipping and Receiving', 85),
-	('Executive', 109);
+WHERE 
+	middle_name IS NULL
+
+LIMIT 3
 ;
