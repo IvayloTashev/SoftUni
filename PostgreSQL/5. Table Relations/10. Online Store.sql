@@ -28,5 +28,8 @@ CREATE TABLE orders(
 
 CREATE TABLE order_items(
 	order_id INT REFERENCES orders(id),
-	item_id INT REFERENCES items(id)
+	item_id INT REFERENCES items(id),
+
+	CONSTRAINT order_items_pkey
+	PRIMARY KEY (order_id, item_id)
 );
